@@ -1,0 +1,47 @@
+@import '../../../theme/variables.scss';
+
+.header {
+  padding: 2 * $basic-margin;
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: white;
+
+  &__menu {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    &__item {
+      padding-right: 9 * $basic-margin;
+
+      &:first-child {
+        position: relative;
+        z-index: 3;
+
+        &::before {
+          position: absolute;
+          content: '';
+          background-image: url(../../../assets/header-wooder.svg);
+          top: 45%;
+          left: 44px;
+          width: 60px;
+          height: 4px;
+          z-index: -1;
+        }
+      }
+    }
+  }
+
+  .burger-menu {
+    display: flex;
+    align-items: center;
+
+    &__title {
+      padding-left: 2 * $basic-margin;
+    }
+  }
+}
