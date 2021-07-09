@@ -28,7 +28,8 @@ html,
 body {
   height: 100%;
   font-family: 'Poxima Nova';
-  overflow-x: hidden;
+  scroll-behavior: smooth;
+  // overflow-x: hidden;
 
   // @media screen and (max-width: $breakpoint-sm) {
   //   font-size: 0.7rem;
@@ -36,16 +37,16 @@ body {
 }
 
 body {
-  overflow-x: hidden;
-  scroll-behavior: smooth;
+  // overflow-x: hidden;
+  position: relative;
 }
 
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  // -webkit-font-smoothing: antialiased;
+  // -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  overflow: hidden;
+  // overflow: hidden;
 }
 
 * {
@@ -100,15 +101,27 @@ body {
   }
 }
 
-.transform-left {
+.rotate-left {
   transform: rotate(-90deg);
 }
 
-.transform-right {
+.rotate-right {
   transform: rotate(90deg);
 }
 
 a {
   text-decoration: none;
   color: $ui-black;
+}
+
+.desktop {
+  @media screen and (max-width: $breakpoint-md) {
+    display: none !important;
+  }
+}
+
+.mobile {
+  @media screen and (min-width: $breakpoint-md) {
+    display: none !important;
+  }
 }

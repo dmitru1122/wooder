@@ -14,25 +14,39 @@
         text-align: left;
       }
     }
+    .description {
+      &__hr {
+        margin-inline-start: initial;
+        margin-inline-end: auto;
+      }
+    }
   }
 
-  &__description,
-  &__img-block {
+  .description,
+  .img-block {
     flex: 1;
+  }
+  .img-block {
+    img {
+      width: 80%;
+    }
   }
 
   .description {
-    @extend .reverse-block;
-
     flex: 1;
-    flex-direction: column;
-    justify-content: center;
+
+    &__title,
+    &__text {
+      margin: 0px;
+    }
 
     &__row {
       display: flex;
-      justify-content: center;
-      align-items: center;
       width: 100%;
+      margin-top: 2.8 * $basic-margin;
+      &:last-child {
+        margin-top: 2.5 * $basic-margin;
+      }
 
       div {
         flex: 1;
@@ -41,14 +55,33 @@
     &__item {
       flex: 1;
       padding-right: 10px;
-      &:first-child {
-        text-align: right;
+    }
+
+    &__hr {
+      margin-inline-start: auto;
+      margin-inline-end: initial;
+
+      &-title {
+        margin-top: 0.5 * 48px;
+        max-width: 15 * $basic-margin;
+        height: 0.1 * $basic-margin;
+        background-color: $ui-black;
+        &--white {
+          background-color: $ui-white;
+        }
+      }
+
+      &-text {
+        margin-top: 0.5 * 15px;
+        max-width: 5 * $basic-margin;
+        height: 0.4 * $basic-margin;
+        background-color: $ui-yellow;
       }
     }
 
     &__bottom-decoration {
       position: absolute;
-      bottom: -(3 * $basic-margin);
+      bottom: 0px;
       left: 10%;
       display: flex;
       flex-direction: column;
@@ -71,12 +104,23 @@
     text-align: right;
   }
 
-  // .description{
+  &--video {
+    .description {
+      &__row {
+        margin-top: 3.5 * $basic-margin;
+        &:last-child {
+          margin-top: 3 * $basic-margin;
+        }
+      }
+    }
 
-  //   &__row {
-  //     di
-  //   }
-  // }
+    .description {
+      flex: 3;
+    }
+    .img-block {
+      flex: 2;
+    }
+  }
 }
 
 //   @media screen and (max-width: $breakpoint-lg) {

@@ -1,4 +1,5 @@
-import { Suspense, lazy } from 'react';
+// import { Suspense, lazy } from 'react';
+import PropTypes from 'prop-types';
 import './HomePage.scss';
 import backgrounLeft from '../../../assets/main-background-left.png';
 import backgrounRight from '../../../assets/main-background-right.png';
@@ -11,57 +12,101 @@ import arrowRight from '../../../assets/arrow.png';
 import arrowLong from '../../../assets/arrow-long.png';
 import furnitureImg from '../../../assets/furniture-img.png';
 import decorImg from '../../../assets/decor.png';
+// import aboutUsImage from '../../../assets/furniture-img.png';
 
-const ReverseTemplate = lazy(() => import('../../reverse-template/ReverseTemplate'));
-const BackgroundImage = lazy(() => import('../../background-image/BackgroundImage'));
+// const VideoTemplate = lazy(() => import('../../video-tepmplate/VideoTemplate'));
+// const ReverseTemplate = lazy(() => import('../../reverse-template/ReverseTemplate'));
+// const BackgroundImage = lazy(() => import('../../background-image/BackgroundImage'));
+
+import VideoTemplate from '../../video-tepmplate/VideoTemplate';
+import ReverseTemplate from '../../reverse-template/ReverseTemplate';
+import BackgroundImage from '../../background-image/BackgroundImage';
 
 const furniture = {
+  type: 'block',
   title: 'Furniture',
   description: `Wooder utilizes materials otherwise left behind, rendered useless in their original intent. By creating
   new places made of reclaimed barnwood`,
   link: '',
   img: furnitureImg,
   right: '',
+  number: '01.',
 };
 const decoration = {
+  type: 'block',
   title: 'decoration',
   description: `Wooder utilizes materials otherwise left behind, rendered useless in their original intent. By creating
   new places made of reclaimed barnwood`,
   link: '',
   img: decorImg,
   right: 'right',
+  number: '02.',
 };
 
 const professional = {
-  type: 'video',
-  title: 'We do the design of any complexity',
-  description: `This is a team of professionals that make the furniture and wood decor high standard. Createing modern
+  preview: {
+    type: 'video',
+    title: 'We do the design of any complexity',
+    description: `This is a team of professionals that make the furniture and wood decor high standard. Createing modern
   design. Adhering to the global quality standards. And we are doing work with love.`,
+    link: '',
+    img: '',
+    right: '',
+  },
+  video: {
+    link: 'youtube',
+  },
+};
+const aboutUs = {
+  type: 'block',
+  title: 'About us',
+  description: `We are a team of prfessionals in the wood processing and the creation of wooden furniture of the hightest class`,
   link: '',
-  // img: '',
+  img: furnitureImg,
   right: '',
 };
 
-function Home() {
+const propType = {
+  aboutUsRef: PropTypes.objectOf(PropTypes.object),
+  productsRef: PropTypes.objectOf(PropTypes.object),
+  homeRef: PropTypes.objectOf(PropTypes.object),
+};
+const defaultProp = {
+  aboutUsRef: null,
+  productsRef: null,
+  homeRef: null,
+};
+const handleScrollButtom = () => {
+  document.body.scrollTo(0, 1000);
+  window.scrollTo(0, 1000);
+};
+
+function Home(props) {
+  const { aboutUsRef, productsRef, homeRef } = props;
   return (
-    <div className='home'>
-      <section className='main-screen container'>
+    <main className='home'>
+      <section className='main-screen container' ref={homeRef}>
         <div className='main-screen__background-left'>
+          {/* <Suspense fallback={<div>...Loading</div>}> */}
+          <BackgroundImage img={backgrounLeft} />
+          {/* </Suspense> */}
+        </div>
+        <div className='main-screen__background-right'>
+          {/* <Suspense fallback={<div>...Loading</div>}> */}
+          <BackgroundImage img={backgrounRight} />
+          {/* </Suspense> */}
+        </div>
+        {/* <div className='main-screen__background-left'>
           <Suspense fallback={<div>...Loading</div>}>
-            <BackgroundImage img={backgrounLeft} />
+            <BackgroundImage imgName='left' />
           </Suspense>
-          {/* <img src={backgrounLeft} alt='backgroun' /> */}
         </div>
         <div className='main-screen__background-right'>
           <Suspense fallback={<div>...Loading</div>}>
-            <BackgroundImage img={backgrounRight} />
+            <BackgroundImage imgName='right' />
           </Suspense>
-          {/* <img src={backgrounRight} alt='backgroun' /> */}
-        </div>
-        <div className='main-screen__number transform-right'>
-          {/* <div>
-            <img src='' alt='line' />
-          </div> */}
+        </div> */}
+        <div className='main-screen__number rotate-right'>
           <div className='main-screen__number__title app-text app-text--xxl app-text--yellow'> — 01</div>
           <div className='number__circle'>
             <img src={circleFourth} alt='circle' />
@@ -90,59 +135,66 @@ function Home() {
             </button>
           </div>
           <div className='main-screen__main__scroll '>
-            <button type='button' className='button-none'>
+            <button type='button' className='button-none button' onClick={handleScrollButtom}>
               <div>
                 <img className='app-text--white' src={mouse} alt='scroll' />
               </div>
               <div>
                 <img className='app-text--white' src={arrowLong} alt='arrow' />
               </div>
+              <div className='app-text app-text--uppercase app-text--white rotate-right app-text--grey'>Scroll</div>
             </button>
           </div>
         </div>
         <div className='main-screen__sidebaar'>
-          <div className='transform-right app-text--grey app-text app-text--s app-text--letter-spacing-3 app-text--uppercase'>
+          <div className='rotate-right app-text--grey app-text app-text--s app-text--letter-spacing-3 app-text--uppercase'>
             Furniture & decor
           </div>
         </div>
       </section>
-      <section>
-        <Suspense fallback={<div>...Loading</div>}>
-          <ReverseTemplate
-            title={furniture.title}
-            description={furniture.description}
-            img={furniture.img}
-            link={furniture.link}
-            right={furniture.right}
-          />
-        </Suspense>
-        <Suspense fallback={<div>...Loading</div>}>
-          <ReverseTemplate
-            title={decoration.title}
-            description={decoration.description}
-            img={decoration.img}
-            link={decoration.link}
-            right={decoration.right}
-          />
-        </Suspense>
+      <section className='furniture-decoration' ref={productsRef}>
+        {/* <Suspense fallback={<div>...Loading</div>}> */}
+        <ReverseTemplate
+          title={furniture.title}
+          description={furniture.description}
+          img={furniture.img}
+          link={furniture.link}
+          right={furniture.right}
+          number={furniture.number}
+        />
+        {/* </Suspense> */}
+        {/* <Suspense fallback={<div>...Loading</div>}> */}
+        <ReverseTemplate
+          title={decoration.title}
+          description={decoration.description}
+          img={decoration.img}
+          link={decoration.link}
+          right={decoration.right}
+          number={decoration.number}
+        />
+        {/* </Suspense> */}
       </section>
 
-      <section className='professional'>
-        <div className='professional__preview'>
-          <Suspense fallback={<div>...Loading</div>}>
-            <ReverseTemplate
-              type={professional.type}
-              title={professional.title}
-              description={professional.description}
-              link={professional.link}
-              right={professional.right}
-            />
-          </Suspense>
-        </div>
+      <section className='video-professional'>
+        {/* <Suspense fallback={<div>...Loading</div>}> */}
+        <VideoTemplate preview={professional.preview} video={professional.video} />
+        {/* </Suspense> */}
       </section>
-    </div>
+      <section className='about-us' ref={aboutUsRef}>
+        {/* <Suspense fallback={<div>...Loading</div>}> */}
+        <ReverseTemplate
+          title={aboutUs.title}
+          description={aboutUs.description}
+          img={aboutUs.img}
+          link={aboutUs.link}
+          right={aboutUs.right}
+        />
+        {/* </Suspensye> */}
+      </section>
+    </main>
   );
-  // return <Suspense fallback={<div>Loading...</div>} />;
 }
 
+Home.propTypes = propType;
+Home.defaultProps = defaultProp;
 export default Home;

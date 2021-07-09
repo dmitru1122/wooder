@@ -58,18 +58,21 @@ $breakpoint-xs: 360px;
     font-size: 16px;
   }
   &--l {
-    font-size: 36px;
+    font-size: 24px;
   }
   &--xl {
-    font-size: 48px;
+    font-size: 36px;
   }
   &--xxl {
-    font-size: 52px;
+    font-size: 48px;
   }
   &--xxxl {
-    font-size: 100px;
+    font-size: 52px;
   }
   &--xxxxl {
+    font-size: 100px;
+  }
+  &--xxxxxl {
     font-size: 395px;
   }
 }

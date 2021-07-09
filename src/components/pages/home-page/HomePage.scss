@@ -2,11 +2,6 @@
 
 .home {
   position: relative;
-  .button-cs {
-    border: 1px solid $ui-white;
-    padding: 2 * $basic-margin;
-  }
-
   .main-screen {
     display: flex;
     justify-content: space-between;
@@ -36,6 +31,7 @@
       img {
         width: 100%;
         max-height: 80 * $basic-margin;
+        height: 80 * $basic-margin;
       }
     }
     &__background-right {
@@ -45,6 +41,7 @@
       img {
         width: 100%;
         max-height: 84 * $basic-margin;
+        height: 84 * $basic-margin;
       }
     }
 
@@ -62,6 +59,7 @@
       line-height: 58px;
 
       &__title {
+        white-space: nowrap;
         margin-left: 14 * $basic-margin;
         padding-right: 7 * $basic-margin;
       }
@@ -103,33 +101,21 @@
       }
     }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    
-
     &__sidebaar {
       align-items: center;
       padding-top: 6%;
+      white-space: nowrap;
     }
   }
-  .professional__preview {
-    background-image: url('../../../assets/video-background.png');
-    background-position: center;
+
+  .furniture-decoration {
+    margin-top: 10 * $basic-margin;
+  }
+  .video-professional {
+    margin-top: 10 * $basic-margin;
+  }
+  .about-us {
+    margin-top: 10 * $basic-margin;
+    margin-bottom: 10 * $basic-margin;
   }
 }

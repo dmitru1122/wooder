@@ -1,0 +1,31 @@
+@import '../../theme/variables.scss';
+
+// .button {
+.button-cs {
+  border: 1px solid $ui-white;
+  padding: 1 * $basic-margin;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 30 * $basic-margin;
+  height: 6 * $basic-margin;
+  &__image {
+    padding: 0.5 * $basic-margin;
+    height: 100%;
+  }
+}
+
+.button--add {
+  cursor: pointer;
+  border: 1px solid $ui-yellow;
+  border-radius: 20px;
+  padding: 0.5 * $basic-margin;
+  color: $ui-yellow;
+  transition: all 0.25s ease-in-out;
+
+  &:hover {
+    background-color: $ui-yellow;
+    color: $ui-white;
+  }
+}

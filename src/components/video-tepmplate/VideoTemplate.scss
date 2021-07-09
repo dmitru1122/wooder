@@ -1,0 +1,25 @@
+@import '../../theme/variables.scss';
+
+.video {
+  width: 100%;
+  &__container {
+    background-image: url('../../assets/video-background.png');
+    background-position: center;
+    padding: 10%;
+    padding-top: 9 * $basic-margin;
+    padding-bottom: 9 * $basic-margin;
+    display: flex;
+    justify-content: center;
+    &__preview {
+      padding: 5 * $basic-margin;
+      border: 2px solid $ui-yellow;
+    }
+
+    &__content {
+      margin-left: auto;
+      margin-right: auto;
+      height: 50 * $basic-margin;
+      width: 88.8 * $basic-margin;
+    }
+  }
+}

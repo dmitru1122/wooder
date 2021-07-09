@@ -1,0 +1,9 @@
+@import '../../../theme/variables.scss';
+
+.catalog {
+  .collection {
+    margin-top: 4 * $basic-margin;
+    display: flex;
+    flex-flow: row wrap;
+  }
+}
